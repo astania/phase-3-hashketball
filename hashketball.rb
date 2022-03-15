@@ -136,17 +136,19 @@ HOME_TEAM = game_hash[:home]
 AWAY_TEAM = game_hash[:away]
 GAME_HASH = [HOME_TEAM, AWAY_TEAM]
 
+def the_right_player(name)
+  PLAYERS.find { |player| player[:player_name] == name }
+end 
+
 
 pp HOME_TEAM.class
 
 def num_points_scored(name)
-  locatedPlayer = PLAYERS.find { |player| player[:player_name] == name }
-  locatedPlayer[:points]
+  the_right_player(name)[:points]
 end
 
 def shoe_size(name)
-  located_player = PLAYERS.find { |player| player[:player_name] == name }
-  located_player[:shoe]
+  the_right_player(name)[:shoe]
 end
 
 def team_colors(team_name)
@@ -165,9 +167,8 @@ def player_numbers(name)
   numbers = correct_team_players.map{ |player| player[:number]}
 end 
 
-def player_stats(player_name)
-  PLAYERS.find{|player| player[:player_name] == player_name}
-  
+def player_stats(name)
+  the_right_player(name)
 end 
 
 def big_shoe_rebounds
