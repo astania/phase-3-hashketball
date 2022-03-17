@@ -129,6 +129,8 @@ def game_hash
   }
 end
 
+game_hash
+
 # Write code here
 
 # HELPERS
@@ -160,8 +162,8 @@ def team_names()
   [game_hash[:home][:team_name], game_hash[:away][:team_name]]
 end
 
-def player_numbers(name)
-  correct_team_players = GAME_HASH.find { |team| team[:team_name] == name }[:players]
+def player_numbers(team_name)
+  correct_team_players = game_hash.find { |team| team[:team_name] == team_name }[:players]
   correct_team_players.map { |player| player[:number] }
 end
 
